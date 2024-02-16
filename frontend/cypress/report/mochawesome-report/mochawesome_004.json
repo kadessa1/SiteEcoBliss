@@ -1,0 +1,149 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-02-16T22:30:24.066Z",
+    "end": "2024-02-16T22:30:47.447Z",
+    "duration": 23381,
+    "testsRegistered": 3,
+    "passPercent": 66.66666666666666,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "93d226ac-3075-4c39-a190-d2888a73f749",
+      "title": "",
+      "fullFile": "cypress\\e2e\\SCENARIO\\cart_1p-1q.cy.js",
+      "file": "cypress\\e2e\\SCENARIO\\cart_1p-1q.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "908b4305-03cb-4f69-8790-de05bad4fcff",
+          "title": "adding a product to the cart",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login test true",
+              "fullTitle": "adding a product to the cart login test true",
+              "timedOut": null,
+              "duration": 2561,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'http://localhost:8081/login',\n  body: {\n    username: 'test2@test.fr',\n    password: 'testtest'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('token');\n  authToken = response.body.token;\n});",
+              "err": {},
+              "uuid": "d7ccec93-2be6-42b3-bbd8-3f5089614fa6",
+              "parentUUID": "908b4305-03cb-4f69-8790-de05bad4fcff",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify order lines",
+              "fullTitle": "adding a product to the cart verify order lines",
+              "timedOut": null,
+              "duration": 1963,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'http://localhost:8081/orders',\n  headers: {\n    Authorization: `Bearer ${authToken}`\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  orderLines = response.body.orderLines;\n  orderLines.forEach(line => {\n    cy.request({\n      method: 'DELETE',\n      url: 'http://localhost:8081/orders/' + line.id + '/delete',\n      headers: {\n        Authorization: `Bearer ${authToken}`\n      }\n    });\n  });\n});",
+              "err": {},
+              "uuid": "2c0cc9ed-c292-4370-9093-a3c2160c3667",
+              "parentUUID": "908b4305-03cb-4f69-8790-de05bad4fcff",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "adding a product to the cart",
+              "fullTitle": "adding a product to the cart adding a product to the cart",
+              "timedOut": null,
+              "duration": 14438,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "(0, _connection.connexion)();\n//On va sur la page des produits pour en sélectionner un\ncy.get('[data-cy=\"nav-link-products\"]').click();\ncy.get('button').eq(2).should('contain', 'Consulter').click();\n//On ajoute au panier une quantité négative     \ncy.get('[data-cy=\"detail-product-quantity\"]').click();\ncy.get('[data-cy=\"detail-product-quantity\"]').clear();\ncy.get('[data-cy=\"detail-product-quantity\"]').type('-1');\ncy.get('[data-cy=\"detail-product-add\"]').click();\n//On va sur le panier, le produit ne doit pas être présent\ncy.get('[data-cy=\"nav-link-cart\"]').click();\ncy.wait(500);\ncy.contains('Poussière de lune').should('not.exist');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Mon panier' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Mon panier' but never did.\n    at connexion (webpack://eco-bliss-bath/./cypress/e2e/FUNCTIONS/connection.js:9:29)\n    at Context.eval (webpack://eco-bliss-bath/./cypress/e2e/SCENARIO/cart_1p-1q.cy.js:49:19)",
+                "diff": null
+              },
+              "uuid": "04069192-54e9-4007-b591-33f6e8ab6047",
+              "parentUUID": "908b4305-03cb-4f69-8790-de05bad4fcff",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d7ccec93-2be6-42b3-bbd8-3f5089614fa6",
+            "2c0cc9ed-c292-4370-9093-a3c2160c3667"
+          ],
+          "failures": [
+            "04069192-54e9-4007-b591-33f6e8ab6047"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 18962,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
