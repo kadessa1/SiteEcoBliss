@@ -24,7 +24,7 @@ describe('access to shopping cart with api', ()=> {
             url:'http://localhost:8081/orders',
             failOnStatusCode: false
         }).then((response) => {
-            expect(response.status).to.eq(401);
+            expect(response.status).to.eq(403);
         })
     })
 
