@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-02-16T21:37:20.998Z",
+    "end": "2024-02-16T21:37:21.337Z",
+    "duration": 339,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e9d77a4c-ef8a-4002-8b18-e24582eaa92c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\API\\product_api.cy.js",
+      "file": "cypress\\e2e\\API\\product_api.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "34f85422-9f22-4fcb-b54b-15ed28ddb6a1",
+          "title": "product info ",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "product sheet",
+              "fullTitle": "product info  product sheet",
+              "timedOut": null,
+              "duration": 265,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'GET',\n  url: 'http://localhost:8081/products/3'\n}).then(response => {\n  expect(response.status).to.eq(200);\n  const productSheet = response.body;\n  expect(productSheet.name).to.eq('Sentiments printaniers');\n  expect(productSheet.skin).to.eq('Propre, fraîche');\n  expect(productSheet.aromas).to.eq('Frais et fruité');\n  expect(productSheet.ingredients).to.eq('Framboise, zeste de citron et feuille de menthe');\n  expect(productSheet.description).to.eq('Savon avec une formule douce à base d’huile de framboise, de citron et de menthe qui nettoie les mains efficacement sans les dessécher.');\n  expect(productSheet.price).to.eq(60);\n});",
+              "err": {},
+              "uuid": "33187bf5-48d8-4cf6-a7e6-bd25ba5a43c3",
+              "parentUUID": "34f85422-9f22-4fcb-b54b-15ed28ddb6a1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "33187bf5-48d8-4cf6-a7e6-bd25ba5a43c3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 265,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

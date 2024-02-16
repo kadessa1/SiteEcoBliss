@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-02-16T21:37:25.350Z",
+    "end": "2024-02-16T21:37:27.365Z",
+    "duration": 2015,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a7f40df6-e49d-466b-ae43-cd148cc455cf",
+      "title": "",
+      "fullFile": "cypress\\e2e\\API\\reviews_api.cy.js",
+      "file": "cypress\\e2e\\API\\reviews_api.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "95eb9994-495f-4cd5-9de2-9cbab1cd143f",
+          "title": "addind a review",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login test true",
+              "fullTitle": "addind a review login test true",
+              "timedOut": null,
+              "duration": 1103,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'http://localhost:8081/login',\n  body: {\n    username: 'test2@test.fr',\n    password: 'testtest'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('token');\n  authToken = response.body.token;\n});",
+              "err": {},
+              "uuid": "4370da74-880b-40f5-ba69-aeb7c2b5b38c",
+              "parentUUID": "95eb9994-495f-4cd5-9de2-9cbab1cd143f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "adding a review",
+              "fullTitle": "addind a review adding a review",
+              "timedOut": null,
+              "duration": 810,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'http://localhost:8081/reviews',\n  headers: {\n    Authorization: `Bearer ${authToken}`\n  },\n  body: {\n    title: 'Ceci est le titre de mon avis',\n    comment: 'Ceci est un commentaire pour tester les avis',\n    rating: '5'\n  }\n}).then(response => {\n  expect(response.status).to.eq(200);\n});",
+              "err": {},
+              "uuid": "bc56fe34-8d23-4306-8c7d-67697556792d",
+              "parentUUID": "95eb9994-495f-4cd5-9de2-9cbab1cd143f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4370da74-880b-40f5-ba69-aeb7c2b5b38c",
+            "bc56fe34-8d23-4306-8c7d-67697556792d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1913,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

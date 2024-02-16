@@ -1,0 +1,87 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-02-16T21:40:39.577Z",
+    "end": "2024-02-16T21:40:48.139Z",
+    "duration": 8562,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fec7f4fc-d80e-4948-81c0-9d6b460e985a",
+      "title": "",
+      "fullFile": "cypress\\e2e\\SCENARIO\\review_xss.cy.js",
+      "file": "cypress\\e2e\\SCENARIO\\review_xss.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "it did not contain XSS vulnerability",
+          "fullTitle": "it did not contain XSS vulnerability",
+          "timedOut": null,
+          "duration": 5914,
+          "state": "passed",
+          "speed": "medium",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "(0, _connection.connexion)();\ncy.get('[data-cy=\"nav-link-reviews\"]').click();\ncy.get('[data-cy=\"review-input-rating-images\"] img').first().click();\ncy.get('[data-cy=\"review-input-title\"]').type(\"Ceci est un test\");\ncy.get('[data-cy=\"review-input-comment\"]').type('<script>alert(\"XSS\");</script>');\ncy.get('[data-cy=\"review-submit\"]').click();\ncy.on('window:alert', () => {\n  throw new Error('Une fenêtre d\\'alerte s\\'est affichée !');\n});",
+          "err": {},
+          "uuid": "7aedb7d2-1a66-4b52-9483-ece4eb8f1182",
+          "parentUUID": "fec7f4fc-d80e-4948-81c0-9d6b460e985a",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [
+        "7aedb7d2-1a66-4b52-9483-ece4eb8f1182"
+      ],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 5914,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "charts": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
